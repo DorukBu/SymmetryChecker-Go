@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
-	"testpackage"
+	"stringOps"
 )
 
 func main() {
-	fmt.Println("This is my first package!")
-	TestPackageFunction()
+	
 
 }
