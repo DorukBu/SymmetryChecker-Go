@@ -1,8 +1,7 @@
 package stringOps
 
 import (
-	"fmt"
-
+	
 )
 
 func EvenChecker(str string) bool {
