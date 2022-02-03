@@ -1,6 +1,6 @@
 ![Logo-scaled](/assets/SymmCheckGo-Logo-1-crop.png)
 # Symmetry Checker - Golang
-#### Symmetry Checker checks a given strings symmetry with regards to the wild card '?' and returns a message containing:
+#### Symmetry Checker checks a given strings symmetry keeping the wild card '?' in mind, and returns a message containing:
 - Strings symmetry status
 - Wild card presence in the string
 - Imputation of the wildcard with the mirroring letter
