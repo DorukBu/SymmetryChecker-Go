@@ -27,6 +27,9 @@ jobs:
       # Build (Added after GOROOT error)
       - name: Build
         run: go build -v ./...
+      
+      
+      - name: Dir check
         run: ls
 
       # Run unit tests.
