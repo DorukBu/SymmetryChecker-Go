@@ -20,9 +20,14 @@ jobs:
       - name: Print Go version
         run: go version
 
+      # Test Go
+      - name: Go Env Setup
+        run: go env -w GO111MODULE=off
+
       # Build (Added after GOROOT error)
       - name: Build
         run: go build -v ./...
+        run: ls
 
       # Run unit tests.
       - name: Run  unit tests.
