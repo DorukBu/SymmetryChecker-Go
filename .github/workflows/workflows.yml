@@ -25,11 +25,7 @@ jobs:
       - name: Go Env Setup
         run: go env -w GO111MODULE=off
 
-      # Build (Added after GOROOT error)
-      #- name: Build
-      #  run: go build -v ./...
-
-      # Run unit tests.
+      # Run unit tests. (working directory to be changed after adding new packages)
       - name: Run  unit tests.
         working-directory: ./pkg/stringOps
         run: go test -v
