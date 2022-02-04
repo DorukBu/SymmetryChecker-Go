@@ -31,6 +31,6 @@ jobs:
 
       # Run unit tests.
       - name: Run  unit tests.
-        working-directory: ./stringOps
+        working-directory: ./pkg/stringOps
         run: go test -v
 
