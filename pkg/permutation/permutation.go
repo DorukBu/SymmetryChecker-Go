@@ -34,6 +34,48 @@ import (
 	"gonum.org/v1/gonum/stat/combin" // Example function: https://github.com/gonum/gonum/blob/master/stat/combin/combinations_example_test.go#L198
 )
 
-func Permutate()  {
-	
+/*
+func ExamplePermutations_index() {
+	// The integer slices returned from Permutations can be used to index
+	// into a data structure.
+	data := []string{"a", "b", "c", "d"}
+	cs := combin.Permutations(len(data), 2)
+	for _, c := range cs {
+		fmt.Printf("%s%s\n", data[c[0]], data[c[1]])
+	}
+
+	// Output:
+	// ab
+	// ba
+	// ac
+	// ca
+	// ad
+	// da
+	// bc
+	// cb
+	// bd
+	// db
+	// cd
+	// dc
+}
+*/
+
+func Permutate(set []rune, dblIndex []int) [][]rune {
+	cs := combin.Permutations(len(set), len(dblIndex))
+
+	perms := make([][]rune, len(cs))
+	for i := range perms {
+		perms[i] = make([]rune, len(dblIndex))
+		for j, k := range cs[i]{
+			perms[i][j] = set[k]
+		}
+	}
+	for _,  i := range set {
+		t := make([]rune, len(dblIndex))
+		for j := range dblIndex {
+			t[j] = i
+		}
+		perms = append(perms, t)	
+	}
+	return perms
 }
