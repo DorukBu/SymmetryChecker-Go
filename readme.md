@@ -9,6 +9,6 @@
 ## Goals
 The goal of the project is to cover a few key pillars:
 - Create a Go project w/ respect to best practices & Go module structure
-- Build a full CI/ CD pipeline including test , benchmarks, automated deployment, and verbose logging.
-- Employ serverless tools such as GitHub Actions, AWS API Gateway, AWS Lambda.
+- Build a full CI/ CD pipeline including test , benchmarks, containerization, automated deployment, and verbose logging.
+- Employ serverless tools such as GitHub Actions, AWS API Gateway, AWS Lambda, AWS ECR.
 
