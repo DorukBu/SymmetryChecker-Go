@@ -81,3 +81,13 @@ func WCardIndex(wC rune, arr []rune) (sngIndex []int, dblIndex []int) {
 	}
 	return sngIndex, dblIndex
 }
+
+// Unify -> unify permutations of runes ([][]rune) into array of strings ([]string)
+func Unify(perms [][]rune) []string {
+	uni := make([]string, len(perms))
+	for i := range perms {
+		str := string(perms[i][:])
+		uni[i] = str
+	}
+	return uni
+} 

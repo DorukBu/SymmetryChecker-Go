@@ -225,13 +225,13 @@ func TestWCardIndex(t *testing.T)  {
 		x, y := WCardIndex(test.arg1, test.arg2)
 		t.Logf("Test output: sngWcards(index)->'%v', dblWcards(index)->'%v'", x, y)
 		
-		for i, v := range test.expected1 {
-			if v != x[i] {
+		for j, v := range test.expected1 {
+			if v != x[j] {
 				t.Errorf("Output in sngWCIndex: %v not equal to expected %v", x, v)
 			}
 		} 	
-		for i, v := range test.expected2 {
-			if v != y[i] {
+		for j, v := range test.expected2 {
+			if v != y[j] {
 				t.Errorf("Output in dblWCIndex: %v not equal to expected %v", y, v)
 			}
 		}			
@@ -246,7 +246,54 @@ func BenchmarkWCardIndex(b *testing.B) {
 	}
 }
 
+// ## WCardIndex - Example
+
 func ExampleWCardIndex()  {
 	fmt.Println(WCardIndex(36, []rune{36, 36, 36, 36, 110, 122, 36}))
 	// Output: [1 2] [0 3]
+}
+
+
+////////////////////////////////////////////
+////		FUNCTION -> Unify   		////
+////////////////////////////////////////////
+
+// ## Unify - Test
+
+type unifyTest struct {
+	arg [][]rune ; expected []string
+}
+
+var unifyTests = []unifyTest{
+	{ [][]rune{{97, 98}, {98, 97}, {97, 99}, {99, 97}, {97, 100}, {100, 97}, {98, 99}, {99, 98}, {98, 100}, {100, 98}, {99, 100}, {100, 99}, {97, 97}, {98, 98}, {99, 99}, {100, 100}}, []string{"ab", "ba", "ac", "ca", "ad", "da", "bc", "cb", "bd", "db", "cd", "dc", "aa", "bb", "cc", "dd"} },
+}
+
+func TestUnify(t *testing.T)  {
+	for i, test := range unifyTests {
+		t.Logf("Test no: %v", i+1)
+		t.Logf("Test input: [][]rune->'%v'. Expected output: []string->'%v'", test.arg, test.expected)
+		x := Unify(test.arg)
+		t.Logf("Test output: []string->'%v'", x)
+		
+		for j, v := range test.expected {
+			if v != x[j] {
+				t.Errorf("Output []string: %v not equal to expected %v", x[j], v)
+			}
+		} 				
+	}	
+}
+
+// ## Unify - Benchmark
+
+func BenchmarkUnify(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Unify([][]rune{{97, 98}, {98, 97}, {97, 99}, {99, 97}, {97, 100}, {100, 97}, {98, 99}, {99, 98}, {98, 100}, {100, 98}, {99, 100}, {100, 99}, {97, 97}, {98, 98}, {99, 99}, {100, 100}})
+	}
+}
+
+// ## Unify - Example
+
+func ExampleUnify()  {
+	fmt.Println(Unify([][]rune{{97, 98}, {98, 97}, {97, 99}, {99, 97}, {97, 100}, {100, 97}, {98, 99}, {99, 98}, {98, 100}, {100, 98}, {99, 100}, {100, 99}, {97, 97}, {98, 98}, {99, 99}, {100, 100}}))
+	// Output: [ab ba ac ca ad da bc cb bd db cd dc aa bb cc dd]
 }
