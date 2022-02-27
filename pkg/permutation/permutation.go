@@ -70,12 +70,14 @@ func Permutate(set []rune, dblIndex []int) [][]rune {
 			perms[i][j] = set[k]
 		}
 	}
-	for _,  i := range set {
-		t := make([]rune, len(dblIndex))
-		for j := range dblIndex {
-			t[j] = i
-		}
-		perms = append(perms, t)	
+	if len(dblIndex) > 1 {
+		for _,  i := range set {
+			t := make([]rune, len(dblIndex))
+			for j := range dblIndex {
+				t[j] = i
+			}
+			perms = append(perms, t)	
+		}	
 	}
 	return perms
 }
