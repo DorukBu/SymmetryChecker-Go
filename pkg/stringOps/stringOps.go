@@ -3,6 +3,7 @@ package stringOps
 import (
 	"strings"
 	"math"
+	"permutation"
 )
 
 
@@ -91,3 +92,40 @@ func Unify(perms [][]rune) []string {
 	}
 	return uni
 } 
+
+
+// Fill -> fill wildcard slots (double and single wildcards)
+func Fill(arr []rune, wC rune) (res [][]rune) {
+
+	sngIndex, dblIndex := WCardIndex(wC, arr)
+	set := CharSet(wC, arr)
+
+	if len(sngIndex) != 0 {
+		for _, v := range sngIndex {
+			arr[v] = arr[len(arr)-1-v]
+		}
+		//fmt.Println(arr)
+	}
+	if len(dblIndex) != 0 {
+		perms := Permutate(set, dblIndex)
+		res := make([][]rune, len(perms))
+
+		for i := range res {
+			res[i] = make([]rune, len(arr))
+			tmp := make([]rune, len(arr))
+			copy(tmp, arr)
+			res[i] = temp
+			for j, k := range dblIndex {
+				res[i][k] = perms[i][j]
+				res[i][len(arr)-1-k] = perms[i][j]
+			}
+		}
+		//fmt.Println(res)
+		return res
+	} else if len(dblIndex) == 0 {
+		res := make([][]rune, 1)
+		res[0] = arr
+		return res
+	}
+	return res
+}
