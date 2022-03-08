@@ -3,7 +3,7 @@ package stringOps
 import (
 	"strings"
 	"math"
-	"permutation"
+	permutation "github.com/DorukBu/SymmetryChecker-Go/pkg/permutation"
 )
 
 
@@ -107,14 +107,14 @@ func Fill(arr []rune, wC rune) (res [][]rune) {
 		//fmt.Println(arr)
 	}
 	if len(dblIndex) != 0 {
-		perms := Permutate(set, dblIndex)
+		perms := permutation.Permutate(set, dblIndex)
 		res := make([][]rune, len(perms))
 
 		for i := range res {
 			res[i] = make([]rune, len(arr))
 			tmp := make([]rune, len(arr))
 			copy(tmp, arr)
-			res[i] = temp
+			res[i] = tmp
 			for j, k := range dblIndex {
 				res[i][k] = perms[i][j]
 				res[i][len(arr)-1-k] = perms[i][j]

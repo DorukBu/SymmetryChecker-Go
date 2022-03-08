@@ -1,5 +1,5 @@
 /*
-Test (table-test format), Benchmark, Examle implementation for the following fuctions in stringOps package:
+Test (table-test format), Benchmark, Example implementation for the following fuctions in stringOps package:
 - EvenCheck
 - Seperate
 - SymmCheck
@@ -314,4 +314,35 @@ var fillTests = []fillTest{
 	{ []rune{102, 105, 43, 101, 114, 122, 101}, 43, [][]rune { {102, 105, 114, 101, 114, 122, 101} } },
 	{ []rune{102, 105, 65, 65, 114, 122, 101}, 65, [][]rune { {102, 105, 114, 102, 114, 122, 101}, {102, 105, 114, 105, 114, 122, 101}, {102, 105, 114, 114, 114, 122, 101}, {102, 105, 114, 122, 114, 122, 101}, {102, 105, 114, 101, 114, 122, 101} } },
 
+}
+
+func TestFill(t *testing.T) {
+	for i, test := range fillTests {
+		t.Logf("Test no: %v", i+1)
+		t.Logf("Test input: []rune->'%v', rune->'%v'.\n Expected output: [][]rune->'%v'", test.arg1, test.arg2, test.expected)
+		x := Fill(test.arg1, test.arg2)
+		t.Logf("Test output: [][]rune->'%v'", test.expected)
+		for i, j := range test.expected{
+			for k, l := range j {
+				if l != x[i][k] {
+					t.Errorf("Output []rune: %v not equal to expected %v",x[i][k] ,l)
+				}
+			}
+		}
+	}
+}
+
+// ## Fill - Benchmark
+
+func BenchmarkFill(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Fill([]rune{102, 105, 65, 65, 114, 122, 101}, 65)
+	}
+}
+
+// ## Fill - Example
+
+func ExampleFill() {
+	fmt.Println(Fill([]rune{102, 105, 65, 65, 114, 122, 101}, 65))
+	// Output: [[102 105 114 102 114 122 101] [102 105 114 105 114 122 101] [102 105 114 114 114 122 101] [102 105 114 122 114 122 101] [102 105 114 101 114 122 101]]
 }
