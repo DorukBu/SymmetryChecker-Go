@@ -23,7 +23,7 @@ jobs:
 
       # Test Go
       - name: Go Env Setup
-        run: go env -w GO111MODULE=off
+        run: go env -w GO111MODULE=on
 
       # Run unit tests. (working directory to be changed after adding new packages)
       - name: Run  unit tests.
